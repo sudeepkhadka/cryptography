@@ -1,0 +1,26 @@
+CC = clang
+CFLAGS = -Wall -O3 -Wextra -pedantic --std=c17
+BUILD_DIR = bin
+TARGETS = build_rc4 
+
+# all as default target to build all targets with just 'make'
+all: $(TARGETS)
+.PHONY: all  
+
+init:
+	echo "Building bin directory..."
+	[ -d $(BUILD_DIR) ] || mkdir $(BUILD_DIR)
+	echo "Clang formatting source and header files..."
+	find . -name \*.h -o -name \*.c | xargs clang-format -i
+.PHONY: init 
+
+# build_fork has init as dependecy, creating bin folder if it doesn't exist
+build_rc4: init
+	$(CC) $(CFLAGS) deploy_rc4.c -o $(BUILD_DIR)/deploy_rc4
+.PHONY: build_rc4
+
+
+# delete the build folder for a fresh start
+clean:
+	[ $(BUILD_DIR) != "/" ] && rm -rf $(BUILD_DIR)
+.PHONY: clean
