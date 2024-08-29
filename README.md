@@ -5,7 +5,7 @@ run `./bin/deploy_rc4` for running the binary
 run `./bin/test_rc4` for testing the binary
 
 ### How to compile and run in Windows
-Uncomment below line
+Uncomment below line from deploy_rc4.c
 // #include <Windows.h>
 and compile in visual studio
 run the output `deploy_rc4.exe` 
