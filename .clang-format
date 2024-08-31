@@ -2,7 +2,7 @@
 Language: Cpp
 BasedOnStyle: Microsoft
 SortIncludes: true
-ColumnLimit: 80
+ColumnLimit: 30
 AccessModifierOffset: -4
 AlignAfterOpenBracket: Align
 AlignConsecutiveMacros: true
@@ -51,7 +51,6 @@ BreakConstructorInitializersBeforeComma: false
 BreakConstructorInitializers: BeforeComma
 BreakAfterJavaFieldAnnotations: true
 BreakStringLiterals: true
-ColumnLimit: 80
 CommentPragmas: '^ IWYU pragma:'
 CompactNamespaces: false
 ConstructorInitializerAllOnOneLineOrOnePerLine: false

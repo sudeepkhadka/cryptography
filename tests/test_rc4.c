@@ -15,14 +15,19 @@ int clean_suite1(void)
     return 0;
 }
 
+void print_contents(Rc4Context *context)
+{
+    for (int i = 0; i < BUF_MAX; i++)
+    {
+        printf("arr[%d] = %d \n", i, context->arr[i]);
+    }
+}
+
 void test_rc4Init(void)
 {
     Rc4Context context;
     rc4Init(&context, key, sizeof(key));
-    for (int i = 0; i < BUF_MAX; i++)
-    {
-        printf(" %d", context.arr[i]);
-    }
+    print_contents(&context);
 }
 
 void test_rc4Cipher(void)
@@ -30,10 +35,7 @@ void test_rc4Cipher(void)
     Rc4Context context;
     rc4Init(&context, key, sizeof(key));
     rc4Cipher(&context, shellcode, shellcode, sizeof(shellcode));
-    for (int i = 0; i < BUF_MAX; i++)
-    {
-        printf(" %d", context.arr[i]);
-    }
+    print_contents(&context);
 }
 
 int main()

@@ -16,7 +16,6 @@ typedef struct
 
 } Rc4Context;
 
-
 void rc4Init(Rc4Context *context, const unsigned char *key, size_t length);
 
 void rc4Cipher(Rc4Context *context, const unsigned char *input, unsigned char *output, size_t length);
