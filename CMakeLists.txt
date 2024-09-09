@@ -5,15 +5,7 @@ project(
     DESCRIPTION "Deploy rc4 algorithm"
 )
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/headers)
+include(cmake/build_system.cmake)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
-add_compile_options(-Wall -O3 -Wextra -pedantic --std=c17)
-add_executable(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/src/deploy_rc4.c)
-
-
-if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/src/deploy_rc4.c)
-    add_library(rc4_lib SHARED ${CMAKE_CURRENT_SOURCE_DIR}/src/deploy_rc4.c)
-    add_executable(test_rc4 ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_rc4.c)
-    target_link_libraries(test_rc4 rc4_lib cunit)
-endif()
+add_all_targets(${CLANG_TIDY_CHECKS})
+add_all_tests()
