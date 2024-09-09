@@ -1,8 +1,9 @@
 #include <openssl/rc4.h>
 #include <stdio.h>
 #include <string.h>
-
-#define OSSL_DEPRECATEDIN_3_0
+#pragma GCC diagnostic push                                // saves the current state of diagnostics.
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations" // disables the warning for deprecated declarations.
+#define OPENSSL_NO_DEPRECATED_3_0
 
 int main()
 {
@@ -39,3 +40,7 @@ int main()
 
     return 0;
 }
+
+#pragma GCC diagnostic pop // restores the previous state of diagnostics.
+
+/* End of file */

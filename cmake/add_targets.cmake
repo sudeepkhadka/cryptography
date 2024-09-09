@@ -4,14 +4,17 @@ function(add_all_targets CMAKE_CHECKS)
     
     if (EXISTS ${CMAKE_SOURCE_DIR}/src/deploy_rc4.c)
         add_executable(deploy_rc4 ${CMAKE_SOURCE_DIR}/src/deploy_rc4.c)
+        set_target_properties(${target} PROPERTIES COMPILE_OPTIONS ${COMPILE_OPT})
     endif()
     
-    # if (EXISTS ${CMAKE_SOURCE_DIR}/src/simple_rc4.c)
-    #     add_executable(simple_rc4 ${CMAKE_SOURCE_DIR}/src/simple_rc4.c)
-    # endif()
+    if (EXISTS ${CMAKE_SOURCE_DIR}/src/simple_rc4.c)
+        find_package(OpenSSL REQUIRED)
+        add_executable(simple_rc4 ${CMAKE_SOURCE_DIR}/src/simple_rc4.c)
+        target_link_libraries(simple_rc4 OpenSSL::SSL OpenSSL::Crypto)
+        add_compile_options(-g3 -O3)
+    endif()
 
-    # set(TARGETS_LIST deploy_rc4 simple_rc4)
-    set(TARGETS_LIST deploy_rc4 )
+    set(TARGETS_LIST deploy_rc4 simple_rc4)
 
     # Strip all the release executable to reduce its size
     foreach(target ${TARGETS_LIST})
@@ -23,7 +26,6 @@ function(add_all_targets CMAKE_CHECKS)
         )
         set_target_properties(${target} PROPERTIES
                 RUNTIME_OUTPUT_DIRECTORY ${OUTPUT_DIRECTORY})
-        set_target_properties(${target} PROPERTIES COMPILE_OPTIONS ${COMPILE_OPT})
     endforeach()
 
     # set the compile options and definitions for both build types

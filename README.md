@@ -26,6 +26,11 @@ Older version of Makefile and crypto files from our resource/website
 
 
 **Issues**
+`RC4` is deprecated: Since OpenSSL 3.0. Therefore, Use this to run the binary:
+`sudo apt-get install libssl-dev`
+added compiler specific directives to remove warnings. 
+Do not remove `#pragma` Directives from source file. RC4 is just for testing purpose, it is not safe for use anymore.
+
 Contact @ace aka user@khadsud on discord
 
 **Resource:** 
