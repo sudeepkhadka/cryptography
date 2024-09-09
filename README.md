@@ -1,4 +1,5 @@
 ### How to compile and run in linux
+`sudo apt-get install clang clang-tidy gcc libssl-dev`
 Run `build.sh` 
 Output will be inside `bin` directory
 run `./bin/deploy_rc4` for running the binary
@@ -26,8 +27,7 @@ Older version of Makefile and crypto files from our resource/website
 
 
 **Issues**
-`RC4` is deprecated: Since OpenSSL 3.0. Therefore, Use this to run the binary:
-`sudo apt-get install libssl-dev`
+`RC4` is deprecated: Since OpenSSL 3.0. Therefore, Used this to run the binary:
 added compiler specific directives to remove warnings. 
 Do not remove `#pragma` Directives from source file. RC4 is just for testing purpose, it is not safe for use anymore.
 
