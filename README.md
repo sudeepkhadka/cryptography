@@ -1,4 +1,5 @@
 ### How to compile and run in linux
+`sudo apt-get install clang clang-tidy gcc libssl-dev`
 Run `build.sh` 
 Output will be inside `bin` directory
 run `./bin/deploy_rc4` for running the binary
