@@ -13,6 +13,9 @@ int main()
     unsigned char ciphertext[128];                          // Buffer for ciphertext
     unsigned char decryptedtext[128];                       // Buffer for decrypted text
 
+    printf("Welcome to the RC4 encryption/decryption demo!\n");
+    printf("key: %s \nplaintext: %s \n", key, plaintext);
+
     // RC4 key structure
     RC4_KEY rc4_key;
 
@@ -36,7 +39,7 @@ int main()
     RC4(&rc4_key, strlen((const char *)plaintext), ciphertext, decryptedtext);
     decryptedtext[strlen((const char *)plaintext)] = '\0'; // Null-terminate the string
 
-    printf("Decrypted text: %s\n", decryptedtext);
+    printf("Decrypted plaintext: %s\n", decryptedtext);
 
     return 0;
 }
